@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Class work | Home Work | test server change</title>
+        <title>className work | Home Work | test server change</title>
         <link rel='icon' type='image/png' href='simple-twitter-16x16-icon-png-7.png' />
         <link rel='stylesheet' href='style.css' />
         <script src="js/react-dev.js"></script>
@@ -23,12 +23,51 @@
     </head>
     
     <body id="app">
-        <div id="appComponent"></div>    
+        <div id="AppComponent"></div>    
 
       </body>
     <script src="https://unpkg.com/@babel/standalone@7.10.3/babel.min.js" crossorigin></script>
     <script type="text/babel" data-presets="react,stage-3">
-
+            
+    const ProductBox = () => {
+        const product = [
+                {
+                    id: 1,
+                    name: 'water bottle',
+                    description: 'color: blue size: large',
+                    price: 100,
+                    discounted_price: 99,
+                },
+                {
+                    id: 2,
+                    name: 'mouse',
+                    description: 'wired usb port',
+                    price: 250,
+                    discounted_price: 199,
+                },
+                {
+                    id: 3,
+                    name: 'watch',
+                    description: 'color: black, watch type: smart, brand: apple',
+                    price: 5000,
+                    discounted_price: 4999,
+                },
+                {
+                    id: 4,
+                    name: 'infinix s23',
+                    description: 'color blue, storage: 120gb ram: 2gb display: 6x4',
+                    price: 25000,
+                    discounted_price: 24999,
+                },
+                {
+                    id: 5,
+                    name: 'shoes',
+                    description: 'size: 8, color blue, type: sports wear',
+                    price: 3000,
+                    discounted_price: 3000,
+                },
+            
+            ];
 
         const Application = () => { 
             
@@ -36,7 +75,7 @@
         
             return (
                 <>
-                    <div id='header' class='slideDown'>
+                    <div id='header' className='slideDown'>
                         <h1 id="headerComponent" > {{ message }} </h1>
                     </div>
                     <div id='container'>
@@ -44,7 +83,7 @@
                         <h1>Sidebar</h1>
                     </div>
                     <div id='mainBox' style='display: flex; width: 100%; gap:10px'>
-                        <div class='grid-item slideDown' style='width: 30%;'>
+                        <div className='grid-item slideDown' style='width: 30%;'>
                             <form id='ecommerceForm' onsubmit='event.preventDefault();' style='display: flex; flex-direction:column; gap: 4px; '>
                             <label>Checkout Form</label>
                             <input type='text' name='first_name' required id='first_name' placeholder="Enter you first_name"/>
@@ -72,20 +111,20 @@
                             </select>
                             <span style='color:red;' hidden id='taskErrorField-country'>This field is required</span>
                             <div>
-                                <label class="paymentLabel blue-700">
+                                <label className="paymentLabel blue-700">
                                     <input type='radio' name='task' required id='payment_method' checked placeholder="Enter you payment_method"/>
                                     Cash on Delivery
                                 </label>
-                                <label class="paymentLabel">
+                                <label className="paymentLabel">
                                     <input type='radio' name='task' required id='payment_method' placeholder="Enter you payment_method"/>
                                     Online Payment
                                 </label>
                             </div>
-                            <button type='button' onclick="sumbitCheckout()" id='submitBtn' class='submitBtn' style='background-color: blue; color: white; padding: 10px; border: none; border-radius: 5px;'>Checkout</button>
+                            <button type='button' onclick="sumbitCheckout()" id='submitBtn' className='submitBtn' style='background-color: blue; color: white; padding: 10px; border: none; border-radius: 5px;'>Checkout</button>
                             </form>
                             <div>
                                 <label>Cart Details</label>
-                                <div id="boxList"  style="width: 80%; display: flex; flex-direction: column; gap: 4px;" class="grid-item slideDown">
+                                <div id="boxList"  style="width: 80%; display: flex; flex-direction: column; gap: 4px;" className="grid-item slideDown">
                     
                             </div>
                                 </div>
@@ -99,6 +138,9 @@
             )
         
         }
+
+        const root = ReactDOM.createRoot(document.getElementById("AppComponent"))
+    root.render(<Application />);
 
         var initialCheckoutForm = {
             first_name: '',
@@ -143,43 +185,7 @@
             cart_details: [],
         
             }
-            var products = [
-            {
-                id: 1,
-                name: 'water bottle',
-                description: 'color: blue size: large',
-                price: 100,
-                discounted_price: 99,
-            },
-            {
-                id: 2,
-                name: 'mouse',
-                description: 'wired usb port',
-                price: 250,
-                discounted_price: 199,
-            },
-            {
-                id: 3,
-                name: 'watch',
-                description: 'color: black, watch type: smart, brand: apple',
-                price: 5000,
-                discounted_price: 4999,
-            },
-            {
-                id: 4,
-                name: 'infinix s23',
-                description: 'color blue, storage: 120gb ram: 2gb display: 6x4',
-                price: 25000,
-                discounted_price: 24999,
-            },
-            {
-                id: 5,
-                name: 'shoes',
-                description: 'size: 8, color blue, type: sports wear',
-                price: 3000,
-                discounted_price: 3000,
-            },
-        ];
+            
         
         renderProducts();
         function validateFields() {
@@ -277,14 +283,14 @@
             let cartHtml = '';
             var cartDiv = document.getElementById('boxList');
             checkoutForm.cart_details.forEach((x) => {
-                var priceBox = x.discounted_price < x.price ? `<div class='actual-price'>
-                        <span class='discount-price'> `+x.price+`</span>
+                var priceBox = x.discounted_price < x.price ? `<div className='actual-price'>
+                        <span className='discount-price'> `+x.price+`</span>
                         `+x.discounted_price+`
-                    </div>` : `<div class='actual-price'>
+                    </div>` : `<div className='actual-price'>
                         `+x.price+`
                     </div>` ;
 
-                cartHtml += `<div class="box" style="background-color: aqua;">
+                cartHtml += `<div className="box" style="background-color: aqua;">
                     <div style="padding-left:10px; border-radius: 50%; padding-right: 10px; display:flex; justify-content: space-between; align-items: center;">
                         <p>`+ x.name +`</p>
                         `+ priceBox +`
@@ -305,17 +311,17 @@
             let productHtml = '';
             var productDiv = document.getElementById('main');
             products.forEach((x) => {
-                var priceBox = x.discounted_price < x.price ? `<div class='actual-price'>
-                        <span class='text-blue-700'> `+x.price+`</span>
+                var priceBox = x.discounted_price < x.price ? `<div className='actual-price'>
+                        <span className='text-blue-700'> `+x.price+`</span>
                         `+x.discounted_price+`
-                    </div>` : `<div class='actual-price'>
+                    </div>` : `<div className='actual-price'>
                         `+x.price+`
                     </div>` ;
-                productHtml += `<div class='grid-item slideDown'>
+                productHtml += `<div className='grid-item slideDown'>
                     <h1>`+ x.name +`</h1>
                     <p>`+ x.description +`</p>
                     `+ priceBox +`
-                    <div class='addToCartBox'>
+                    <div className='addToCartBox'>
                         <input type='number' id='qty`+ x.id +`'/>
                         <button onclick='addToCart(`+x.id+`)'>Add to Cart</button>
 
