@@ -80,7 +80,7 @@
                                     priceBox 
                                 <div className='addToCartBox'>
                                     <input type='number' id="qty x.id" />
-                                    <button onclick= {() =>{addToCart(x.id)}}>
+                                    <button onClick= {() =>{addToCart(x.id)}}>
                                         Add to Cart
                                     </button>
 
@@ -89,7 +89,6 @@
                         )
                     })
                 }
-                
                 </>
             )
         }
@@ -121,21 +120,21 @@
                                 <span style='color:red;' hidden id='taskErrorField-email'>This field is required</span>
                                 <input type='text' name='postal_code' required id='postal_code' placeholder="Enter you postal_code"/>
                                 <span style='color:red;' hidden id='taskErrorField-postal_code'>This field is required</span>
-                                <select id="city" name="city">
-                                    <option selected>Karachi</option>
+                                <select id="city" name="city" defaultValue="Karachi">
+                                    <option>Karachi</option>
                                     <option >Lahore</option>
                                     <option >Islamabed</option>
                                     <option >Peshawar</option>
                                     <option >Queta</option>
                                 </select>
                                 <span style='color:red;' hidden id='taskErrorField-city'>This field is required</span>
-                                <select id="country" name="country">
-                                    <option selected>Pakistan</option>
+                                <select id="country" name="country" defaultValue="Pakistan">
+                                    <option>Pakistan</option>
                                 </select>
                                 <span style='color:red;' hidden id='taskErrorField-country'>This field is required</span>
                                 <div>
                                     <label className="paymentLabel blue-700">
-                                        <input type='radio' name='task' required id='payment_method' checked placeholder="Enter you payment_method"/>
+                                        <input type='radio' name='task' required id='payment_method' defaultChecked placeholder="Enter you payment_method"/>
                                         Cash on Delivery
                                     </label>
                                     <label className="paymentLabel">
@@ -143,7 +142,7 @@
                                         Online Payment
                                     </label>
                                 </div>
-                                <button type='button' onclick="sumbitCheckout()" id='submitBtn' className='submitBtn' style='background-color: blue; color: white; padding: 10px; border: none; border-radius: 5px;'>Checkout</button>
+                                <button type='button' onClick="sumbitCheckout()" id='submitBtn' className='submitBtn' style='background-color: blue; color: white; padding: 10px; border: none; border-radius: 5px;'>Checkout</button>
                                 </form>
                                 <div>
                                     <label>Cart Details</label>
@@ -322,7 +321,7 @@
                             Quantity `+ x.quantity +`
                         </div>
                         <div>
-                            <button onclick="removeItemCart(`+ x.id +`)">
+                            <button onClick="removeItemCart(`+ x.id +`)">
                                 X
                             </button>
                         </div>
