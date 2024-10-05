@@ -332,17 +332,7 @@
         }
         function renderProducts() {
             let productHtml = '';
-            var productDiv = document.getElementById('main');
-            products.forEach((x) => {
-                var priceBox = x.discounted_price < x.price ? `<div className='actual-price'>
-                        <span className='text-blue-700'> `+x.price+`</span>
-                        `+x.discounted_price+`
-                    </div>` : `<div className='actual-price'>
-                        `+x.price+`
-                    </div>` ;
-            });
-            productDiv.innerHTML = productHtml;
-        }
+            var productDiv = document.getElementById('main');}
     </script>
     
 </html>
