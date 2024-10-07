@@ -75,12 +75,21 @@
                     product.map((x) => {
                         return (
                             <div className="grid-item slideDown">
-                                <h1>x.name </h1>
-                                <p>x.description </p>
-                                    priceBox 
+                                <h1>{x.name} </h1>
+                                <p>{x.description} </p>
+                                <div>
+                                    {x.discounted_price < x.price ?(<div className='actual-price'>
+                                            <span className='discount-price'> <s>{x.price}</s></span>
+                                            {x.discounted_price}
+                                        </div>) : (
+                                        <div className='actual-price' v-else>
+                                            {x.price}
+                                        </div> ) 
+                                    }
+                                </div>  
                                 <div className='addToCartBox'>
                                     <input type='number' id="qty x.id" />
-                                    <button onclick= {() =>{addToCart(x.id)}}>
+                                    <button onClick= {() =>{addToCart(x.id)}}>
                                         Add to Cart
                                     </button>
 
@@ -105,56 +114,56 @@
                         <div id='sidebar'>
                             <h1>Sidebar</h1>
                         </div>
-                        <div id='mainBox' style='display: flex; width: 100%; gap:10px'>
-                            <div className='grid-item slideDown' style='width: 30%;'>
-                                <form id='ecommerceForm' onsubmit='event.preventDefault();' style='display: flex; flex-direction:column; gap: 4px; '>
-                                <label>Checkout Form</label>
-                                <input type='text' name='first_name' required id='first_name' placeholder="Enter you first_name"/>
-                                <span style='color:red;' hidden id='taskErrorField-first_name'>This field is required</span>
-                                <input type='text' name='last_name' required id='last_name' placeholder="Enter you last_name"/>
-                                <span style='color:red;' hidden id='taskErrorField-last_name'>This field is required</span>
-                                <input type='tel' name='number' required id='number' placeholder="Enter you phone_number"/>
-                                <span style='color:red;' hidden id='taskErrorField-number'>This field is required</span>
-                                <textarea id="address" name="address" placeholder="enter your full address"></textarea>
-                                <span style='color:red;' hidden id='taskErrorField-address'>This field is required</span>
-                                <input type='email' name='email' required id='email' placeholder="Enter you email"/>
-                                <span style='color:red;' hidden id='taskErrorField-email'>This field is required</span>
-                                <input type='text' name='postal_code' required id='postal_code' placeholder="Enter you postal_code"/>
-                                <span style='color:red;' hidden id='taskErrorField-postal_code'>This field is required</span>
-                                <select id="city" name="city">
-                                    <option selected>Karachi</option>
-                                    <option >Lahore</option>
-                                    <option >Islamabed</option>
-                                    <option >Peshawar</option>
-                                    <option >Queta</option>
-                                </select>
-                                <span style='color:red;' hidden id='taskErrorField-city'>This field is required</span>
-                                <select id="country" name="country">
-                                    <option selected>Pakistan</option>
-                                </select>
-                                <span style='color:red;' hidden id='taskErrorField-country'>This field is required</span>
-                                <div>
-                                    <label className="paymentLabel blue-700">
-                                        <input type='radio' name='task' required id='payment_method' checked placeholder="Enter you payment_method"/>
-                                        Cash on Delivery
-                                    </label>
-                                    <label className="paymentLabel">
-                                        <input type='radio' name='task' required id='payment_method' placeholder="Enter you payment_method"/>
-                                        Online Payment
-                                    </label>
-                                </div>
-                                <button type='button' onclick="sumbitCheckout()" id='submitBtn' className='submitBtn' style='background-color: blue; color: white; padding: 10px; border: none; border-radius: 5px;'>Checkout</button>
+                        <div id='mainBox' style={{display:"flex", width: "100%", gap:"10px"}}>
+                            <div className='grid-item slideDown' style={{width: "30%",}}>
+                                <form id='ecommerceForm'  style={{display: "flex", flexDirection:"column", gap: "4px", }}>
+                                    <label>Checkout Form</label>
+                                    <input type='text' name='first_name' required id='first_name' placeholder="Enter you first_name"/>
+                                    <span style= {{color:'red'}} hidden id='taskErrorField-first_name'>This field is required</span>
+                                    <input type='text' name='last_name' required id='last_name' placeholder="Enter you last_name"/>
+                                    <span style= {{color:'red'}} hidden id='taskErrorField-last_name'>This field is required</span>
+                                    <input type='tel' name='number' required id='number' placeholder="Enter you phone_number"/>
+                                    <span style= {{color:'red'}} hidden id='taskErrorField-number'>This field is required</span>
+                                    <textarea id="address" name="address" placeholder="enter your full address"></textarea>
+                                    <span style= {{color:'red'}} hidden id='taskErrorField-address'>This field is required</span>
+                                    <input type='email' name='email' required id='email' placeholder="Enter you email"/>
+                                    <span style= {{color:'red'}} hidden id='taskErrorField-email'>This field is required</span>
+                                    <input type='text' name='postal_code' required id='postal_code' placeholder="Enter you postal_code"/>
+                                    <span style= {{color:'red'}} hidden id='taskErrorField-postal_code'>This field is required</span>
+                                    <select defaultValue="Karachi" id="city" name="city">
+                                        <option>Karachi</option>
+                                        <option>Lahore</option>
+                                        <option>Islamabed</option>
+                                        <option>Peshawar</option>
+                                        <option>Queta</option>
+                                    </select>
+                                    <span style= {{color:'red'}} hidden id='taskErrorField-city'>This field is required</span>
+                                    <select defaultValue="Pakistan" id="country" name="country">
+                                        <option>Pakistan</option>
+                                    </select>
+                                    <span style= {{color:'red'}} hidden id='taskErrorField-country'>This field is required</span>
+                                    <div>
+                                        <label className="paymentLabel blue-700">
+                                            <input type='radio' name='task' required id='payment_method' defaultChecked placeholder="Enter you payment_method"/>
+                                            Cash on Delivery
+                                        </label>
+                                        <label className="paymentLabel">
+                                            <input type='radio' name='task' required id='payment_method' placeholder="Enter you payment_method"/>
+                                            Online Payment
+                                        </label>
+                                    </div>
+                                    <button type='button' onClick={()=>{sumbitCheckout(x.id)}} id='submitBtn' className='submitBtn' style={{backgroundColor: "blue", color:" white", padding: "10px", border: "none", borderRadius: "5px",}}>Checkout</button>
                                 </form>
                                 <div>
                                     <label>Cart Details</label>
-                                    <div id="boxList"  style="width: 80%; display: flex; flex-direction: column; gap: 4px;" className="grid-item slideDown">
+                                    <div id="boxList"  style={{width: "80%", display: "flex", flexDirection:" column", gap: "4px",}} className="grid-item slideDown">
                         
                                     </div>
                                 </div>
+                            </div>
+                            <div id='main'>
+                            <ProductBox/>
                             </div>    
-                        </div>
-                        <div id='main'>
-                            
                         </div>
                         
                     </div>
@@ -186,7 +195,7 @@
             },
             total_amount: '',
             cart_details: [],
-        }
+        };
             var checkoutForm = {
             first_name: '',
             last_name: '',
@@ -223,9 +232,10 @@
                 var checkValidation = true;
                 basicFields.forEach((x)=> {
                     if(document.getElementById(x).value == '' || document.getElementById(x).value == null) {
-                        checkValidation = false;
+                        checkValidation = false,
                         document.getElementById('taskErrorField-'+x).hidden = false
-                    } else {
+                    }
+                     else {
                         document.getElementById('taskErrorField-'+x).hidden = true
                     }
                 })
