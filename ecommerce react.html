@@ -104,6 +104,29 @@
         const Application = () => { 
             debugger
             const [message, setMessage] = React.useState('Hello React!');
+            const {cart, setCart} = React.useState([]);
+            const initialCheckoutForm = {
+                    first_name: '',
+                    last_name: '',
+                    phone_number: 0,
+                    address: '',
+                    email: '',
+                    postal_code: '',
+                    city: '',
+                    country: '',
+                    payment_method: '',
+                    shipping_details: {
+                        address:'',
+                        city: '',
+                        postal_code: '',
+                        country: '',
+                        phone_number: '',
+                        reciever_name: ''
+                    },
+                    total_amount: '',
+                    cart_details: [],
+            
+            };
         
             return (
                 <>
@@ -174,52 +197,7 @@
         const root = ReactDOM.createRoot(document.getElementById("AppComponent"))
     root.render(<Application />);
 
-        var initialCheckoutForm = {
-            first_name: '',
-            last_name: '',
-            phone_number: 0,
-            address: '',
-            email: '',
-            postal_code: '',
-            city: '',
-            country: '',
-            payment_method: '',
-            shipping_details: {
-                address:'',
-                city: '',
-                postal_code: '',
-                country: '',
-                phone_number: '',
-                reciever_name: ''
-            },
-            total_amount: '',
-            cart_details: [],
-        };
-            var checkoutForm = {
-            first_name: '',
-            last_name: '',
-            phone_number: 0,
-            address: '',
-            email: '',
-            postal_code: '',
-            city: '',
-            country: '',
-            payment_method: '',
-            shipping_details: {
-                address:'',
-                city: '',
-                postal_code: '',
-                country: '',
-                phone_number: '',
-                reciever_name: ''
-            },
-            total_amount: '',
-            cart_details: [],
-        
-            }
             
-        
-        
         function validateFields() {
              var basicFields = [
                 'first_name',
